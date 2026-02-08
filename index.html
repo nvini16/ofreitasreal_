@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vídeos de Humor</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    a.button {
+        display: inline-block;
+        background-color: #FF005C;
+        color: #fff;
+        text-decoration: none;
+        padding: 15px 30px;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        transition: background 0.3s;
+    }
+    a.button:hover {
+        background-color: #ff3366;
+    }
+    .audio-control {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    button {
+        background-color: #FF005C;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ff3366;
+    }
+</style>
+</head>
+<body>
+
+<h1>Vídeos de humor diariamente</h1>
+
+<a class="button" href="https://www.tiktok.com/@ofreitasreal" target="_blank">Ver vídeos</a>
+
+<div class="audio-control">
+    <audio id="bg-music" loop>
+        <source src="Here-Hoodtrap-Mylancore.mp3" type="audio/mpeg">
+        
+    </audio>
+    <button onclick="toggleAudio()">Play / Pause Música</button>
+</div>
+
+<script>
+    const music = document.getElementById('bg-music');
+    function toggleAudio() {
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+</script>
+
+</body>
+</html>
