@@ -8,7 +8,7 @@
 <style>
 :root {
   --bg: #121212;
-  --bg-card: #1f1f1f;
+  --card: #1f1f1f;
   --text: #fff;
   --sub: #ccc;
   --primary: #FF005C;
@@ -16,7 +16,7 @@
 
 body.light {
   --bg: #f2f2f2;
-  --bg-card: #ffffff;
+  --card: #ffffff;
   --text: #111;
   --sub: #555;
 }
@@ -29,24 +29,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  text-align: center;
   padding: 20px;
-  overflow-x: hidden;
-}
-
-button, .button, .link-card {
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-button:active, .button:active, .link-card:active {
-  transform: scale(.96);
 }
 
 .brand img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  margin-bottom: 10px;
 }
 
 .button {
@@ -55,43 +44,21 @@ button:active, .button:active, .link-card:active {
   padding: 15px 30px;
   border-radius: 12px;
   text-decoration: none;
-  font-size: 1.2rem;
+  margin: 20px 0;
+  display: inline-block;
 }
 
-.links-container {
-  max-width: 400px;
+.links-container, .section {
   width: 100%;
-  margin: 20px 0;
+  max-width: 400px;
 }
-.link-card {
-  background: var(--bg-card);
-  padding: 14px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
+
+.link-card, .section {
+  background: var(--card);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
   cursor: pointer;
-}
-
-.section {
-  max-width: 500px;
-  background: var(--bg-card);
-  padding: 20px;
-  border-radius: 14px;
-  margin: 20px 0;
-}
-
-.toggle {
-  margin-top: 10px;
-  cursor: pointer;
-  font-size: .9rem;
-  opacity: .8;
-}
-
-.counter {
-  font-size: .9rem;
-  margin-top: 5px;
-  color: var(--sub);
 }
 
 iframe {
@@ -99,31 +66,32 @@ iframe {
   border-radius: 12px;
 }
 
+.toggle {
+  font-size: .9rem;
+  opacity: .8;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 .feedback {
   font-size: .85rem;
-  margin-top: 10px;
   color: #00ffaa;
   opacity: 0;
-  transition: opacity .4s;
+  transition: opacity .3s;
 }
-  #musicButton {
+
+#musicButton {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999;
-
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
   background: #111;
   color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
-}
-
-#musicButton:active {
-  transform: scale(0.95);
 }
 </style>
 </head>
@@ -136,120 +104,88 @@ iframe {
 </div>
 
 <h1>Vídeos de humor diariamente</h1>
-<p id="humorText">Carregando humor…</p>
+<p id="humorText">Rir é mais barato que terapia.</p>
 
-<a class="button" id="mainBtn" href="https://www.tiktok.com/@ofreitasreal" target="_blank">
-Ver vídeos
-</a>
-<div class="counter">Vídeo novo</div>
+<a class="button" id="mainBtn" href="https://www.tiktok.com/@ofreitasreal" target="_blank">Ver vídeos</a>
 
 <div class="links-container">
-  <div class="link-card" data-link="https://www.instagram.com/ofreitasreal">Instagram <span>Ir</span></div>
-  <div class="link-card" data-link="https://wa.me/5511982977787">WhatsApp <span>Falar</span></div>
+  <div class="link-card" data-link="https://www.instagram.com/ofreitasreal">Instagram</div>
+  <div class="link-card" data-link="https://wa.me/5511982977787">WhatsApp</div>
 </div>
-
-  <button id="musicButton">play</button>
 
 <div class="section">
   <h3>Prévia</h3>
-  <iframe height="480"
-    src="https://www.tiktok.com/embed/v2/7234917154120346885">
-  </iframe>
+  <iframe height="480" src="https://www.tiktok.com/embed/v2/7234917154120346885"></iframe>
 </div>
 
 <div class="section">
   <h3>Sobre o criador</h3>
-  <p>Conteúdo focado em humor rápido, cotidiano e identificação real. Vídeos novos praticamente todos os dias.</p>
+  <p>Humor rápido, cotidiano e identificação real. Conteúdo frequente.</p>
 </div>
 
 <div class="toggle" id="themeToggle">Alternar tema</div>
-
 <div id="feedback" class="feedback"></div>
 
-  <button id="musicButton" aria-label="Ativar música">play</button>
+<button id="musicButton">play</button>
 
-<audio id="bgMusic" src="https://image2url.com/r2/default/audio/1770530809277-1766b5fa-b9f7-44e6-a39b-1638a56e2db4.mp3" loop></audio>
-
+<audio id="bgMusic" loop src="https://image2url.com/r2/default/audio/1770530809277-1766b5fa-b9f7-44e6-a39b-1638a56e2db4.mp3"></audio>
 <audio id="clickSound" src="https://image2url.com/r2/default/audio/1770584315740-72792789-9456-49c1-9f82-ad9899f6ab4a.mp3"></audio>
 
 <script>
-const clickSound = document.getElementById('clickSound');
-const feedback = document.getElementById('feedback');
+const bgMusic = document.getElementById("bgMusic");
+const clickSound = document.getElementById("clickSound");
+const musicBtn = document.getElementById("musicButton");
+const feedback = document.getElementById("feedback");
 
-let metrics = JSON.parse(localStorage.getItem('metrics')) || {
-  main: 0, insta: 0, zap: 0
-};
+let playing = false;
 
-function showFeedback(msg) {
-  feedback.textContent = msg;
-  feedback.style.opacity = 1;
-  setTimeout(() => feedback.style.opacity = 0, 2500);
-}
-
-document.getElementById('mainBtn').onclick = () => {
+musicBtn.onclick = () => {
+  clickSound.currentTime = 0;
   clickSound.play();
-  metrics.main++;
-  saveMetrics();
-  showFeedback("Indo para o TikTok");
+
+  if (!playing) {
+    bgMusic.play();
+    musicBtn.textContent = "Pause";
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = "Play";
+  }
+  playing = !playing;
 };
 
-document.querySelectorAll('.link-card').forEach(card => {
+document.querySelectorAll(".link-card").forEach(card => {
   card.onclick = () => {
     clickSound.play();
-    if(card.textContent.includes('Instagram')) metrics.insta++;
-    if(card.textContent.includes('WhatsApp')) metrics.zap++;
-    saveMetrics();
-    window.open(card.dataset.link, '_blank');
+    window.open(card.dataset.link, "_blank");
   };
 });
 
-function saveMetrics(){
-  localStorage.setItem('metrics', JSON.stringify(metrics));
-}
+document.getElementById("mainBtn").onclick = () => {
+  clickSound.play();
+};
 
 const phrases = [
   "Rir é mais barato que terapia.",
   "Se doer, vira piada.",
   "Todo dia um motivo pra rir.",
-  "Humor também é sobrevivência."
-  "Sorrir é o melhor remédio pro mundo."
+  "Humor também é sobrevivência.",
+  "Sorrir é o melhor remédio."
 ];
 
-let idx = 0;
+let i = 0;
 setInterval(() => {
-  document.getElementById('humorText').textContent = phrases[idx++ % phrases.length];
+  document.getElementById("humorText").textContent = phrases[i++ % phrases.length];
 }, 4000);
 
-const toggle = document.getElementById('themeToggle');
+const toggle = document.getElementById("themeToggle");
 toggle.onclick = () => {
-  document.body.classList.toggle('light');
-  localStorage.setItem('theme', document.body.classList.contains('light'));
+  document.body.classList.toggle("light");
+  localStorage.setItem("theme", document.body.classList.contains("light"));
 };
 
-if(localStorage.getItem('theme') === 'true'){
-  document.body.classList.add('light');
+if (localStorage.getItem("theme") === "true") {
+  document.body.classList.add("light");
 }
-
-const button = document.getElementById("musicButton");
-const music = document.getElementById("bgMusic");
-const click = document.getElementById("clickSound");
-
-let isPlaying = false;
-
-button.addEventListener("click", () => {
-  click.currentTime = 0;
-  click.play();
-
-  if (!isPlaying) {
-    music.play();
-    button.textContent = "pause";
-  } else {
-    music.pause();
-    button.textContent = "play";
-  }
-
-  isPlaying = !isPlaying;
-});
 </script>
 
 </body>
