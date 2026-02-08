@@ -168,8 +168,9 @@ Ver vídeos
 
   <button id="musicButton" aria-label="Ativar música">play</button>
 
-<audio id="bgMusic" src="https://image2url.com/r2/default/audio/1770584315740-72792789-9456-49c1-9f82-ad9899f6ab4a.mp3" loop></audio>
+<audio id="bgMusic" src="https://image2url.com/r2/default/audio/1770530809277-1766b5fa-b9f7-44e6-a39b-1638a56e2db4.mp3" loop></audio>
 
+<audio id="clickSound" src="https://image2url.com/r2/default/audio/1770584315740-72792789-9456-49c1-9f82-ad9899f6ab4a.mp3"></audio>
 
 <script>
 const clickSound = document.getElementById('clickSound');
@@ -229,22 +230,25 @@ if(localStorage.getItem('theme') === 'true'){
   document.body.classList.add('light');
 }
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("musicButton");
-  const music = document.getElementById("bgMusic");
+const button = document.getElementById("musicButton");
+const music = document.getElementById("bgMusic");
+const click = document.getElementById("clickSound");
 
-  let playing = false;
+let isPlaying = false;
 
-  btn.addEventListener("click", () => {
-    if (!playing) {
-      music.play();
-      btn.textContent = "Música pausada";
-    } else {
-      music.pause();
-      btn.textContent = "Música tocando";
-    }
-    playing = !playing;
-  });
+button.addEventListener("click", () => {
+  click.currentTime = 0;
+  click.play();
+
+  if (!isPlaying) {
+    music.play();
+    button.textContent = "pause";
+  } else {
+    music.pause();
+    button.textContent = "play";
+  }
+
+  isPlaying = !isPlaying;
 });
 </script>
 
