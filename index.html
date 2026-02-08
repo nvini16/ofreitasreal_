@@ -4,129 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vídeos de Humor | ofreitasreal_</title>
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #121212, #1a1a1a);
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-        text-align: center;
-        padding: 20px;
-        overflow: hidden;
-        position: relative;
-    }
-    /* Partículas leves */
-    .particle {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(255,255,255,0.05);
-        pointer-events: none;
-        animation: float 10s linear infinite;
-    }
-    @keyframes float {
-        0% { transform: translateY(100vh) translateX(0); }
-        100% { transform: translateY(-10vh) translateX(30px); }
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #121212, #1a1a1a);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
 
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    }
-    p.subtitle {
-        font-size: 1rem;
-        margin-bottom: 30px;
-        color: #ccc;
-    }
-    .button {
-        display: inline-block;
-        background-color: #FF005C;
-        color: #fff;
-        text-decoration: none;
-        padding: 15px 30px;
-        border-radius: 12px;
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        transition: background 0.3s, transform 0.2s;
-    }
-    .button:hover {
-        background-color: #ff3366;
-        transform: scale(1.05);
-    }
-    .links-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 30px;
-        width: 100%;
-        max-width: 400px;
-    }
-    .link-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #1f1f1f;
-        padding: 12px 20px;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
-    }
-    .link-card:hover {
-        background-color: #2a2a2a;
-        transform: scale(1.02);
-    }
-    .link-card span {
-        font-size: 1rem;
-        color: #fff;
-    }
-    .audio-control {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    button {
-        background-color: #FF005C;
-        color: #fff;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
-    }
-    button:hover {
-        background-color: #ff3366;
-        transform: scale(1.05);
-    }
-    .feedback {
-        margin-top: 10px;
-        font-size: 0.9rem;
-        color: #00FFAA;
-        opacity: 0;
-        transition: opacity 0.5s;
-    }
-
-    .logo {
-    width: 90px;
-    height: 90px;
+.particle {
+    position: absolute;
     border-radius: 50%;
-    object-fit: cover;
-    margin: 20px 0 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    border: 2px solid rgba(255,255,255,0.1);
-    }
-    .brand {
+    background-color: rgba(255,255,255,0.05);
+    pointer-events: none;
+    animation: float 10s linear infinite;
+}
+@keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+}
+
+.brand {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px 0 10px;
 }
-
 .brand img {
     width: 90px;
     height: 90px;
@@ -138,95 +50,161 @@
 }
 .brand-name {
     font-size: 1.1rem;
-    font-weight: 500;
     opacity: 0.85;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.subtitle {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.button {
+    background-color: #FF005C;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    transition: transform .2s, background .3s;
+}
+.button:hover {
+    background-color: #ff3366;
+    transform: scale(1.05);
+}
+
+.links-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.link-card {
+    background: #1f1f1f;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform .2s, background .3s;
+}
+.link-card:hover {
+    background: #2a2a2a;
+    transform: scale(1.02);
+}
+
+.audio-control {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+button {
+    background-color: #FF005C;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ff3366;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-size: .9rem;
+    color: #00FFAA;
+    opacity: 0;
+    transition: opacity .5s;
 }
 </style>
 </head>
+
 <body>
 
-    <div class="brand">
-    <img 
-      src="https://via.placeholder.com/300x300.png?text=LOGO" 
-      alt="Logo do criador"
-    >
+<div class="brand">
+    <img src="https://via.placeholder.com/300x300.png?text=LOGO" alt="Logo">
     <div class="brand-name">@ofreitasreal_</div>
-    </div>
+</div>
 
 <h1>Vídeos de humor diariamente</h1>
 <p class="subtitle">Os melhores vídeos de humor pra alegrar o seu dia!</p>
 
-<a class="button" href="https://www.tiktok.com/@ofreitasreal" target="_blank">Ver vídeos</a>
+<a class="button" id="mainBtn" href="https://www.tiktok.com/@ofreitasreal" target="_blank">Ver vídeos</a>
 
 <div class="links-container">
-    <div class="link-card" onclick="window.open('https://www.instagram.com/ofreitasreal', '_blank')">
-        <span>Instagram </span>
-        <span>Ir</span>
-    </div>
-    <div class="link-card" onclick="window.open('https://wa.me/5511982977787', '_blank')">
-        <span>WhatsApp </span>
-        <span>Falar</span>
-    </div>
+    <div class="link-card" data-link="https://www.instagram.com/ofreitasreal">Instagram <span>Ir</span></div>
+    <div class="link-card" data-link="https://wa.me/5511982977787">WhatsApp <span>Falar</span></div>
 </div>
 
 <div class="audio-control">
-    <audio id="bg-music" loop>
-        <source src="https://image2url.com/r2/default/audio/1770530809277-1766b5fa-b9f7-44e6-a39b-1638a56e2db4.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop>
+        <source src="https://image2url.com/r2/default/audio/1770530809277-1766b5fa-b9f7-44e6-a39b-1638a56e2db4.mp3">
     </audio>
-    <button id="audio-btn">Play</button>
+    <button id="audioBtn">Play</button>
 </div>
 
 <div id="feedback" class="feedback"></div>
 
+<!-- Sons -->
+<audio id="clickSound">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3">
+</audio>
+
 <script>
-    const music = document.getElementById('bg-music');
-    const audioBtn = document.getElementById('audio-btn');
-    const feedback = document.getElementById('feedback');
-    const mainButton = document.querySelector('.button');
+const music = document.getElementById('bgMusic');
+const audioBtn = document.getElementById('audioBtn');
+const feedback = document.getElementById('feedback');
+const clickSound = document.getElementById('clickSound');
 
-    // Toggle música
-    function toggleAudio() {
-        if (music.paused) {
-            music.play();
-            audioBtn.textContent = "Pause";
-            showFeedback("Música tocando ");
-        } else {
-            music.pause();
-            audioBtn.textContent = "Play";
-            showFeedback("Música pausada ");
-        }
+function showFeedback(msg) {
+    feedback.textContent = msg;
+    feedback.style.opacity = 1;
+    setTimeout(() => feedback.style.opacity = 0, 3000);
+}
+
+audioBtn.onclick = () => {
+    clickSound.play();
+    if (music.paused) {
+        music.play();
+        audioBtn.textContent = "Pause";
+        showFeedback("Música tocando");
+    } else {
+        music.pause();
+        audioBtn.textContent = "Play";
+        showFeedback("Música pausada");
     }
+};
 
-    audioBtn.addEventListener('click', toggleAudio);
+document.getElementById('mainBtn').onclick = () => {
+    clickSound.play();
+    showFeedback("Indo para o TikTok!");
+};
 
-    // Feedback visual
-    function showFeedback(msg) {
-        feedback.textContent = msg;
-        feedback.style.opacity = 1;
-        setTimeout(() => { feedback.style.opacity = 0; }, 3000); // 3 segundos
+document.querySelectorAll('.link-card').forEach(card => {
+    card.onclick = () => {
+        clickSound.play();
+        window.open(card.dataset.link, '_blank');
+    };
+});
+
+function createParticles(qtd) {
+    for (let i = 0; i < qtd; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.width = p.style.height = Math.random()*6+2 + 'px';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.animationDuration = Math.random()*8+5 + 's';
+        document.body.appendChild(p);
     }
-
-    // Tracking simples do botão principal
-    mainButton.addEventListener('click', () => {
-        console.log('Usuário clicou no botão!');
-        showFeedback("Redirecionando para o TikTok!");
-        // Futuro: enviar para Google Analytics ou outro tracking
-    });
-
-    // Criar partículas leves
-    function createParticles(count) {
-        for(let i=0; i<count; i++){
-            const p = document.createElement('div');
-            p.classList.add('particle');
-            p.style.width = `${Math.random()*6+2}px`;
-            p.style.height = `${Math.random()*6+2}px`;
-            p.style.left = `${Math.random()*100}vw`;
-            p.style.animationDuration = `${Math.random()*8+5}s`;
-            document.body.appendChild(p);
-        }
-    }
-
-    createParticles(30); // 30 partículas flutuantes
+}
+createParticles(30);
 </script>
 
 </body>
