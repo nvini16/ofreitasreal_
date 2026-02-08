@@ -8,7 +8,7 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background-color: #121212;
+        background: linear-gradient(135deg, #121212, #1a1a1a);
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -16,10 +16,12 @@
         justify-content: center;
         height: 100vh;
         text-align: center;
+        overflow: hidden;
     }
     h1 {
         font-size: 2rem;
         margin-bottom: 40px;
+        text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
     a.button {
         display: inline-block;
@@ -30,10 +32,11 @@
         border-radius: 12px;
         font-size: 1.2rem;
         margin-bottom: 40px;
-        transition: background 0.3s;
+        transition: background 0.3s, transform 0.2s;
     }
     a.button:hover {
         background-color: #ff3366;
+        transform: scale(1.05);
     }
     .audio-control {
         display: flex;
@@ -48,9 +51,18 @@
         padding: 8px 16px;
         border-radius: 8px;
         cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
     }
     button:hover {
         background-color: #ff3366;
+        transform: scale(1.05);
+    }
+    .feedback {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #00FFAA;
+        opacity: 0;
+        transition: opacity 0.5s;
     }
 </style>
 </head>
@@ -63,20 +75,45 @@
 <div class="audio-control">
     <audio id="bg-music" loop>
         <source src="https://image2url.com/r2/default/audio/1770530809277-1766b5fa-b9f7-44e6-a39b-1638a56e2db4.mp3" type="audio/mpeg">
-        
     </audio>
-    <button onclick="toggleAudio()">Play</button>
+    <button id="audio-btn">Play</button>
 </div>
+<div id="feedback" class="feedback"></div>
 
 <script>
     const music = document.getElementById('bg-music');
+    const audioBtn = document.getElementById('audio-btn');
+    const feedback = document.getElementById('feedback');
+    const mainButton = document.querySelector('.button');
+
+    // Toggle música
     function toggleAudio() {
         if (music.paused) {
             music.play();
+            audioBtn.textContent = "Pause";
+            showFeedback("Música tocando 🎵");
         } else {
             music.pause();
+            audioBtn.textContent = "Play";
+            showFeedback("Música pausada ⏸️");
         }
     }
+
+    audioBtn.addEventListener('click', toggleAudio);
+
+    // Feedback visual
+    function showFeedback(msg) {
+        feedback.textContent = msg;
+        feedback.style.opacity = 1;
+        setTimeout(() => { feedback.style.opacity = 0; }, 1500);
+    }
+
+    // Tracking simples do botão principal
+    mainButton.addEventListener('click', () => {
+        console.log('Usuário clicou no botão!');
+        showFeedback("Redirecionando para o TikTok!");
+        // Futuro: enviar para Google Analytics ou outro tracking
+    });
 </script>
 
 </body>
