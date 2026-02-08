@@ -13,17 +13,37 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
+        justify-content: flex-start;
+        min-height: 100vh;
         text-align: center;
+        padding: 20px;
         overflow: hidden;
+        position: relative;
     }
+    /* Partículas leves */
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.05);
+        pointer-events: none;
+        animation: float 10s linear infinite;
+    }
+    @keyframes float {
+        0% { transform: translateY(100vh) translateX(0); }
+        100% { transform: translateY(-10vh) translateX(30px); }
+    }
+
     h1 {
         font-size: 2rem;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
-    a.button {
+    p.subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        color: #ccc;
+    }
+    .button {
         display: inline-block;
         background-color: #FF005C;
         color: #fff;
@@ -31,18 +51,44 @@
         padding: 15px 30px;
         border-radius: 12px;
         font-size: 1.2rem;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         transition: background 0.3s, transform 0.2s;
     }
-    a.button:hover {
+    .button:hover {
         background-color: #ff3366;
         transform: scale(1.05);
+    }
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 400px;
+    }
+    .link-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #1f1f1f;
+        padding: 12px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+    .link-card:hover {
+        background-color: #2a2a2a;
+        transform: scale(1.02);
+    }
+    .link-card span {
+        font-size: 1rem;
+        color: #fff;
     }
     .audio-control {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
     button {
         background-color: #FF005C;
@@ -69,8 +115,20 @@
 <body>
 
 <h1>Vídeos de humor diariamente</h1>
+<p class="subtitle">Os melhores vídeos de humor pra alegrar o seu dia!</p>
 
 <a class="button" href="https://www.tiktok.com/@ofreitasreal" target="_blank">Ver vídeos</a>
+
+<div class="links-container">
+    <div class="link-card" onclick="window.open('https://www.instagram.com/ofreitasreal', '_blank')">
+        <span>Instagram 📸</span>
+        <span>Ir</span>
+    </div>
+    <div class="link-card" onclick="window.open('https://wa.me/5511999999999', '_blank')">
+        <span>WhatsApp 💬</span>
+        <span>Falar</span>
+    </div>
+</div>
 
 <div class="audio-control">
     <audio id="bg-music" loop>
@@ -78,6 +136,7 @@
     </audio>
     <button id="audio-btn">Play</button>
 </div>
+
 <div id="feedback" class="feedback"></div>
 
 <script>
@@ -91,11 +150,11 @@
         if (music.paused) {
             music.play();
             audioBtn.textContent = "Pause";
-            showFeedback("Música tocando ");
+            showFeedback("Música ligada 🎵");
         } else {
             music.pause();
             audioBtn.textContent = "Play";
-            showFeedback("Música pausada ");
+            showFeedback("Música pausada ⏸️");
         }
     }
 
@@ -105,7 +164,7 @@
     function showFeedback(msg) {
         feedback.textContent = msg;
         feedback.style.opacity = 1;
-        setTimeout(() => { feedback.style.opacity = 0; }, 3000);
+        setTimeout(() => { feedback.style.opacity = 0; }, 3000); // 3 segundos
     }
 
     // Tracking simples do botão principal
@@ -114,6 +173,21 @@
         showFeedback("Redirecionando para o TikTok!");
         // Futuro: enviar para Google Analytics ou outro tracking
     });
+
+    // Criar partículas leves
+    function createParticles(count) {
+        for(let i=0; i<count; i++){
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            p.style.width = `${Math.random()*6+2}px`;
+            p.style.height = `${Math.random()*6+2}px`;
+            p.style.left = `${Math.random()*100}vw`;
+            p.style.animationDuration = `${Math.random()*8+5}s`;
+            document.body.appendChild(p);
+        }
+    }
+
+    createParticles(30); // 30 partículas flutuantes
 </script>
 
 </body>
