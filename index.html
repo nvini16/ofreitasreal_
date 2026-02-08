@@ -111,7 +111,20 @@ iframe {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  }
+
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#musicButton:active {
+  transform: scale(0.95);
+}
 </style>
 </head>
 
@@ -128,7 +141,7 @@ iframe {
 <a class="button" id="mainBtn" href="https://www.tiktok.com/@ofreitasreal" target="_blank">
 Ver vídeos
 </a>
-<div class="counter">🔥 3 novos vídeos hoje</div>
+<div class="counter">Vídeo novo</div>
 
 <div class="links-container">
   <div class="link-card" data-link="https://www.instagram.com/ofreitasreal">Instagram <span>Ir</span></div>
@@ -153,9 +166,10 @@ Ver vídeos
 
 <div id="feedback" class="feedback"></div>
 
-<audio id="clickSound">
-  <source src="https://image2url.com/r2/default/audio/1770584315740-72792789-9456-49c1-9f82-ad9899f6ab4a.mp3">
-</audio>
+  <button id="musicButton" aria-label="Ativar música">play</button>
+
+<audio id="bgMusic" src="https://image2url.com/r2/default/audio/1770584315740-72792789-9456-49c1-9f82-ad9899f6ab4a.mp3" loop></audio>
+
 
 <script>
 const clickSound = document.getElementById('clickSound');
@@ -197,6 +211,7 @@ const phrases = [
   "Se doer, vira piada.",
   "Todo dia um motivo pra rir.",
   "Humor também é sobrevivência."
+  "Sorrir é o melhor remédio pro mundo."
 ];
 
 let idx = 0;
@@ -213,6 +228,24 @@ toggle.onclick = () => {
 if(localStorage.getItem('theme') === 'true'){
   document.body.classList.add('light');
 }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("musicButton");
+  const music = document.getElementById("bgMusic");
+
+  let playing = false;
+
+  btn.addEventListener("click", () => {
+    if (!playing) {
+      music.play();
+      btn.textContent = "Música pausada";
+    } else {
+      music.pause();
+      btn.textContent = "Música tocando";
+    }
+    playing = !playing;
+  });
+});
 </script>
 
 </body>
