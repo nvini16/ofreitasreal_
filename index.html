@@ -93,6 +93,30 @@ iframe {
   font-size: 18px;
   cursor: pointer;
 }
+
+  .scroll-videos {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-videos::-webkit-scrollbar {
+  height: 6px;
+}
+.scroll-videos::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.2);
+  border-radius: 10px;
+}
+
+.scroll-videos iframe {
+  flex: 0 0 260px;
+  height: 460px;
+  border-radius: 14px;
+  scroll-snap-align: center;
+  border: none;
+}
 </style>
 </head>
 
@@ -116,9 +140,30 @@ iframe {
   <span>Vídeo novo!</span>
 
 <div class="section">
-  <h3>Prévia</h3>
+  <h3>Prévia vídeo novo</h3>
   <iframe height="480" src="https://vt.tiktok.com/ZSmJj66pS/"></iframe>
 </div>
+
+  <div class="section">
+  <h3>Vídeos fixados</h3>
+
+  <div class="scroll-videos">
+    <iframe
+      src="https://vt.tiktok.com/ZSmJ6hMM7/"
+      loading="lazy">
+    </iframe>
+
+    <iframe
+      src="https://vt.tiktok.com/ZSmJ69vJX/"
+      loading="lazy">
+    </iframe>
+
+    <iframe
+      src="https://vt.tiktok.com/ZSmJ6C2XE/"
+      loading="lazy">
+    </iframe>
+  </div>
+  </div>
 
 <div class="section">
   <h3>Sobre o criador</h3>
