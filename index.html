@@ -94,11 +94,12 @@ iframe {
   cursor: pointer;
 }
 
-  .scroll-videos {
+  /* Scroll de vídeos fixados */
+.scroll-videos {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding: 10px 4px 14px;
   scroll-snap-type: x mandatory;
 }
 
@@ -106,16 +107,45 @@ iframe {
   height: 6px;
 }
 .scroll-videos::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.25);
   border-radius: 10px;
 }
 
-.scroll-videos a {
+/* Card individual do vídeo */
+.video-card {
   flex: 0 0 260px;
-  height: 460px;
-  border-radius: 14px;
+  height: 420px;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
   scroll-snap-align: center;
-  border: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .2s ease;
+}
+
+.video-card:hover {
+  transform: scale(1.03);
+}
+
+.video-card .tag {
+  font-size: .75rem;
+  opacity: .7;
+}
+
+.video-card .cta {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: .9rem;
 }
 </style>
 </head>
@@ -143,28 +173,45 @@ iframe {
   <h3>Prévia vídeo novo</h3>
   <iframe height="480" src="https://www.tiktok.com/@ofreitasreal/video/7604632065476283666?_r=1&_t=ZS-93ldc2rO4Rh"></iframe>
 </div>
+  
 
-  <div class="section">
+<div class="section">
   <h3>Vídeos fixados</h3>
 
   <div class="scroll-videos">
-  <a href="https://vt.tiktok.com/ZSmJMM4u5/" target="_blank" class="link-card">
-    <strong>Fixado 1</strong>
-    <span>Abrir no TikTok</span>
-  </a>
 
-  <a href="https://vt.tiktok.com/ZSmJ6C2XE/" target="_blank" class="link-card">
-    <strong>Fixado 2</strong>
-    <span>Abrir no TikTok</span>
-  </a>
-
- <a href="https://vt.tiktok.com/ZSmJ6C2XE/" target="_blank" class="link-card">
-    <strong>Fixado 3</strong>
-    <span>Abrir no TikTok</span>
+    <a href="https://vt.tiktok.com/ZSmJMM4u5/" 
+       target="_blank" 
+       class="video-card">
+      <div>
+        <strong>Fixado #1</strong>
+        <p class="tag">Humor • Destaque</p>
+      </div>
+      <div class="cta">Abrir no TikTok</div>
     </a>
+
+    <a href="https://vt.tiktok.com/ZSmJ6C2XE/" 
+       target="_blank" 
+       class="video-card">
+      <div>
+        <strong>Fixado #2</strong>
+        <p class="tag">Humor • Viral</p>
+      </div>
+      <div class="cta">Abrir no TikTok</div>
+    </a>
+
+    <a href="https://vt.tiktok.com/ZSmJ6C2XE/" 
+       target="_blank" 
+       class="video-card">
+      <div>
+        <strong>Fixado #3</strong>
+        <p class="tag">Humor • Novo</p>
+      </div>
+      <div class="cta">Abrir no TikTok</div>
+    </a>
+
   </div>
-  </div>
-  </div>
+</div>
 
 <div class="section">
   <h3>Sobre o criador</h3>
